@@ -1,9 +1,14 @@
+import { useAuthStore } from "@/store/auth";
+
 const BASE_URL = "https://case.nodelabs.dev/api/";
 
 export async function apiFetch<T>(endpoint: string, options?: RequestInit): Promise<T> {
+  const token = useAuthStore.getState().accessToken;
+
   const res = await fetch(`${BASE_URL}${endpoint}`, {
     headers: {
       "Content-Type": "application/json",
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
     ...options,
   });

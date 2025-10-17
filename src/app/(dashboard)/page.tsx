@@ -1,8 +1,8 @@
-import RecentTransaction from "../components/dashboard/RecentTransaction";
-import ScheduledTransfers from "../components/dashboard/ScheduledTransfers";
-import StatCard from "../components/dashboard/StatCard";
-import WalletCard from "../components/dashboard/WalletCard";
-import { TotalWallet, CardWallet } from "../components/icons";
+import RecentTransaction from "@/components/dashboard/RecentTransaction";
+import ScheduledTransfers from "@/components/dashboard/ScheduledTransfers";
+import StatCard from "@/components/dashboard/StatCard";
+import WalletCard from "@/components/dashboard/WalletCard";
+import { TotalWallet, CardWallet } from "@/components/icons";
 export default function DashboardPage() {
   return (
     <div className="container mx-auto">

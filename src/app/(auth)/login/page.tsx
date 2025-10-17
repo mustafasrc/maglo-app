@@ -4,12 +4,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useMutation } from "@tanstack/react-query";
-import { apiFetch } from "@/app/lib/api";
+import { apiFetch } from "@/lib/api";
 import { FcGoogle } from "react-icons/fc";
 import { FaSpinner } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Link from "next/link";
-import { useAuthStore } from "@/app/store/auth";
+import { useAuthStore } from "@/store/auth";
 import { useRouter } from "next/navigation";
 const schema = z.object({
     email: z.string().email("Invalid email address"),

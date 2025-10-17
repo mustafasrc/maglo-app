@@ -1,8 +1,8 @@
 "use client";
 
-import { Search, Notification } from "@/app/components/icons";
+import { Search, Notification } from "@/components/icons";
 import { FaCaretDown } from "react-icons/fa";
-import { selectUser, useAuthStore } from "../store/auth";
+import { selectUser, useAuthStore } from "@/store/auth";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 export default function Header() {

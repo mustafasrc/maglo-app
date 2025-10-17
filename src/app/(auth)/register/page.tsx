@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useMutation } from "@tanstack/react-query";
-import { apiFetch } from "@/app/lib/api";
+import { apiFetch } from "@/lib/api";
 import { FaSpinner } from "react-icons/fa";
 import Link from "next/link";
 import { toast } from "react-toastify";

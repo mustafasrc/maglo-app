@@ -1,5 +1,5 @@
 import { FaChevronRight } from "react-icons/fa6";
-import { formatCurrency } from "@/app/utils/currency";
+import { formatCurrency } from "@/utils/currency";
 
 export default function RecentTransaction() {
     return (

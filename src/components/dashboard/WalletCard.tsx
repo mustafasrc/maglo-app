@@ -1,5 +1,5 @@
 import { BsThreeDots } from "react-icons/bs";
-import { Card, Wifi } from "@/app/components/icons";
+import { Card, Wifi } from "@/components/icons";
 export default function WalletCard() {
     return (
         <div className=" mb-52 space-y-4">
