@@ -41,9 +41,57 @@ export default function IncomeExpenseChart({ data, isLoading = false }: IncomeEx
     return (
         <div className='border border-[#F5F5F5] p-5 rounded-xl'>
             {isLoading ? (
-                <div className="flex flex-col items-center justify-center h-96">
-                    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mb-4"></div>
-                    <p className="text-gray-500 text-lg">Veriler yükleniyor...</p>
+                <div className="space-y-6 animate-pulse">
+                    {/* Header Skeleton */}
+                    <div className="flex justify-between items-center">
+                        <div className="h-6 bg-gray-200 rounded w-40"></div>
+                        <div className="flex gap-2 items-center">
+                            <div className="h-8 bg-gray-200 rounded w-24"></div>
+                            <div className="h-8 bg-gray-200 rounded w-24"></div>
+                            <div className="h-8 bg-gray-200 rounded w-32"></div>
+                        </div>
+                    </div>
+
+                    {/* Legend Skeleton */}
+                    <div className="flex justify-center gap-6">
+                        <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 bg-gray-200 rounded-full"></div>
+                            <div className="h-4 bg-gray-200 rounded w-16"></div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 bg-gray-200 rounded-full"></div>
+                            <div className="h-4 bg-gray-200 rounded w-16"></div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 bg-gray-200 rounded-full"></div>
+                            <div className="h-4 bg-gray-200 rounded w-16"></div>
+                        </div>
+                    </div>
+
+                    {/* Chart Skeleton */}
+                    <div className="h-80 bg-gray-100 rounded-lg relative overflow-hidden">
+                        <div className="absolute inset-0 flex items-end justify-around px-8 pb-12">
+                            {Array.from({ length: 12 }).map((_, i) => (
+                                <div
+                                    key={i}
+                                    className="bg-gray-200 rounded-t w-8"
+                                    style={{ height: `${Math.random() * 60 + 40}%` }}
+                                ></div>
+                            ))}
+                        </div>
+                        {/* Y-axis labels skeleton */}
+                        <div className="absolute left-2 top-8 bottom-12 flex flex-col justify-between">
+                            {Array.from({ length: 5 }).map((_, i) => (
+                                <div key={i} className="h-3 bg-gray-200 rounded w-8"></div>
+                            ))}
+                        </div>
+                        {/* X-axis labels skeleton */}
+                        <div className="absolute bottom-2 left-12 right-8 flex justify-between">
+                            {Array.from({ length: 6 }).map((_, i) => (
+                                <div key={i} className="h-3 bg-gray-200 rounded w-10"></div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             ) : (
                 <>
@@ -58,7 +106,7 @@ export default function IncomeExpenseChart({ data, isLoading = false }: IncomeEx
                                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                         }`}
                                 >
-                                    Çizgi Grafik
+                                    Line
                                 </button>
                                 <button
                                     onClick={() => setChartType('bar')}
@@ -67,7 +115,7 @@ export default function IncomeExpenseChart({ data, isLoading = false }: IncomeEx
                                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                         }`}
                                 >
-                                    Bar Grafik
+                                    Bar
                                 </button>
                             </div>
                             <select name="" id="" className='text-xs bg-[#F8F8F8] p-2 rounded-xl outline-0'>

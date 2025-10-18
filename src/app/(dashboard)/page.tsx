@@ -1,7 +1,10 @@
 "use client";
 
 import { Suspense, useMemo } from "react";
+import RecentTransaction from "@/components/dashboard/RecentTransaction";
+import ScheduledTransfers from "@/components/dashboard/ScheduledTransfers";
 import StatCard from "@/components/dashboard/StatCard";
+import WalletCard from "@/components/dashboard/WalletCard";
 import { TotalWallet, CardWallet } from "@/components/icons";
 import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "@/lib/api";
@@ -12,13 +15,7 @@ import {
   WalletCardsResponse,
   WorkingCapitalResponse
 } from "@/types";
-
-import { lazy } from "react";
-
-const WorkingCapitalChart = lazy(() => import("@/components/dashboard/WorkingCapitalChart"));
-const RecentTransaction = lazy(() => import("@/components/dashboard/RecentTransaction"));
-const WalletCard = lazy(() => import("@/components/dashboard/WalletCard"));
-const ScheduledTransfers = lazy(() => import("@/components/dashboard/ScheduledTransfers"));
+import WorkingCapitalChart from "@/components/dashboard/WorkingCapitalChart";
 
 // Query configuration
 const QUERY_CONFIG = {
@@ -64,7 +61,6 @@ export default function DashboardPage() {
     ...QUERY_CONFIG,
   });
 
-  // Memoize data to prevent unnecessary re-renders
   const statsData = useMemo(() => stats?.data, [stats?.data]);
   const transactionsData = useMemo(() => transactions?.data.transactions || [], [transactions?.data]);
   const scheduledData = useMemo(() => scheduled?.data.transfers || [], [scheduled?.data]);
@@ -100,37 +96,29 @@ export default function DashboardPage() {
           </div>
 
           {/* Working Capital Chart */}
-          <Suspense fallback={<div className="h-64 bg-gray-100 animate-pulse rounded-lg" />}>
-            <WorkingCapitalChart
-              data={workingCapitalData}
-              isLoading={workingCapitalLoading}
-            />
-          </Suspense>
+          <WorkingCapitalChart
+            data={workingCapitalData}
+            isLoading={workingCapitalLoading}
+          />
 
           {/* Recent Transactions */}
-          <Suspense fallback={<div className="h-96 bg-gray-100 animate-pulse rounded-lg" />}>
-            <RecentTransaction
-              transactions={transactionsData}
-              isLoading={transactionsLoading}
-            />
-          </Suspense>
+          <RecentTransaction
+            transactions={transactionsData}
+            isLoading={transactionsLoading}
+          />
         </div>
 
         {/* Sağ Kolon */}
         <aside className="col-span-12 xl:col-span-4 space-y-12">
-          <Suspense fallback={<div className="h-64 bg-gray-100 animate-pulse rounded-lg" />}>
-            <WalletCard
-              wallets={walletData}
-              isLoading={walletLoading}
-            />
-          </Suspense>
+          <WalletCard
+            wallets={walletData}
+            isLoading={walletLoading}
+          />
 
-          <Suspense fallback={<div className="h-96 bg-gray-100 animate-pulse rounded-lg" />}>
-            <ScheduledTransfers
-              scheduledTransfers={scheduledData}
-              isLoading={scheduledLoading}
-            />
-          </Suspense>
+          <ScheduledTransfers
+            scheduledTransfers={scheduledData}
+            isLoading={scheduledLoading}
+          />
         </aside>
       </div>
     </div>
