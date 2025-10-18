@@ -132,7 +132,7 @@ export default function Register() {
                 `}
                 >
                     {isPending && <FaSpinner className="animate-spin" />}
-                    {isPending ? "Loading..." : "Sign Up"}
+                    {isPending ? "Loading..." : "Create Account"}
                 </button>
 
                 {/* Google Login */}
@@ -155,7 +155,7 @@ export default function Register() {
                         <img
                             src="/vector.png"
                             alt=""
-                            className="absolute left-1/2 -translate-x-1/2"
+                            className="absolute left-1/2 -translate-x-1/2 -bottom-3"
                         />
                     </Link>
                 </p>

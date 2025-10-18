@@ -114,18 +114,18 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
                     <ul className="mt-auto mb-24 space-y-1">
                         <li>
+                            <button className="w-full p-3 rounded-xl flex gap-x-3 text-[#929EAE] hover:bg-[#E8F5B8] hover:text-black transition-all duration-200 cursor-pointer">
+                                <Help className="w-5 h-5" />
+                                Help
+                            </button>
+                        </li>
+                        <li>
                             <button
                                 className="w-full p-3 rounded-xl flex gap-x-3 text-[#929EAE] hover:bg-[#E8F5B8] hover:text-black transition-all duration-200 cursor-pointer"
                                 onClick={handleLogout}
                             >
                                 <Logout className="w-5 h-5" />
                                 Logout
-                            </button>
-                        </li>
-                        <li>
-                            <button className="w-full p-3 rounded-xl flex gap-x-3 text-[#929EAE] hover:bg-[#E8F5B8] hover:text-black transition-all duration-200 cursor-pointer">
-                                <Help className="w-5 h-5" />
-                                Help
                             </button>
                         </li>
                     </ul>

@@ -89,7 +89,7 @@ export default function WalletCard({ wallets, isLoading }: WalletCardProps) {
                     </div>
 
                     {/* Commercial Card */}
-                    <div className="bg-gradient-to-b from-[rgba(255,255,255,0.5)] to-[rgba(255,255,255,0.4)] rounded-2xl p-5 space-y-10 inline-block w-[95%] mx-auto absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-[65%] backdrop-blur-[10px] border border-gray-200/40 shadow-sm">
+                    <div className="bg-gradient-to-b from-[rgba(255,255,255,0.5)] to-[rgba(255,255,255,0.4)] rounded-2xl p-5 space-y-10 inline-block w-[95%] mx-auto absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-[70%] backdrop-blur-[10px] border border-gray-200/40 shadow-sm">
                         <div className="flex items-center gap-3 text-white">
                             <h2 className="text-lg font-bold">{commercialCardName}.</h2>
                             <span className="w-[1px] h-5 bg-white"></span>

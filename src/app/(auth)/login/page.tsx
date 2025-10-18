@@ -123,7 +123,7 @@ export default function Login() {
                         <img
                             src="/vector.png"
                             alt=""
-                            className="absolute left-1/2 -translate-x-1/2"
+                            className="absolute left-1/2 -translate-x-1/2 -bottom-3"
                         />
                     </Link>
                 </p>
