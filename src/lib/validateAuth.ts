@@ -17,7 +17,7 @@ export async function refreshToken(): Promise<string> {
 
 export async function validateAuth(): Promise<void> {
     const { user, accessToken, setAuth, logout } = useAuthStore.getState();
-    let token = accessToken ?? Cookies.get("auth-token");
+    const token = accessToken ?? Cookies.get("auth-token");
 
     if (token && !user) {
         try {
