@@ -2,6 +2,7 @@ import { FaChevronRight } from "react-icons/fa6";
 import { formatCurrency } from "@/utils/currency";
 import { ScheduledTransfer } from "@/types";
 import moment from "moment";
+import Image from "next/image";
 
 
 interface ScheduledTransfersProps {
@@ -52,10 +53,13 @@ export default function ScheduledTransfers({
                                 className="flex justify-between items-center border-b border-[#FAFAFA] py-5 last:border-b-0"
                             >
                                 <div className="flex items-center gap-4">
-                                    <img
+                                    <Image
                                         src={transfer.image || "/user.png"}
                                         alt={transfer.name}
-                                        className="w-8 h-8 rounded-full border border-gray-100"
+                                        className=" rounded-full border border-gray-100"
+                                        width={35}
+                                        height={35}
+                                        unoptimized
                                     />
                                     <div>
                                         <p className="text-[#1B212D] text-sm font-semibold">

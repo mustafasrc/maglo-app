@@ -16,7 +16,6 @@ const schema = z.object({
     password: z.string().min(1, "Password is required"),
 });
 import { LoginResponse } from "@/types";
-
 type FormData = z.infer<typeof schema>;
 
 export default function Login() {
@@ -28,7 +27,7 @@ export default function Login() {
     const router = useRouter()
 
 
-    const { mutate, isPending } = useMutation<any, Error, FormData>({
+    const { mutate, isPending } = useMutation<LoginResponse, Error, FormData>({
         mutationFn: (data) => apiFetch<LoginResponse>("/users/login", {
             method: "POST",
             headers: {
@@ -40,9 +39,6 @@ export default function Login() {
             toast.success(`Welcome back ${data.data.user.fullName}`)
             setAuth(data.data.user, data.data.accessToken)
             router.push('/')
-        },
-        onError: (err) => {
-            console.warn(err.message)
         },
     });
 
@@ -121,7 +117,7 @@ export default function Login() {
 
 
                 <p className="text-gray-500 text-center">
-                    Don't have an account?
+                    Don&apos;t have an account?
                     <Link href={'/register'} className="font-semibold text-black cursor-pointer mx-2 relative">
                         Sign up
                         <img

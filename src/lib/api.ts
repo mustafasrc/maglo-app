@@ -1,16 +1,13 @@
-
-import { useAuthStore } from "@/store/auth";
 import { toast } from "react-toastify";
-import { refreshToken } from "@/lib/validateAuth";
+import Cookies from "js-cookie";
 
 const BASE_URL = "https://case.nodelabs.dev/api/";
 
 export async function apiFetch<T>(
   endpoint: string,
   options?: RequestInit,
-  retry = true
 ): Promise<T> {
-  const token = useAuthStore.getState().accessToken;
+  const token = Cookies.get('auth-token');
 
   try {
     const res = await fetch(`${BASE_URL}${endpoint}`, {
@@ -21,17 +18,6 @@ export async function apiFetch<T>(
       ...options,
     });
 
-    if (res.status === 401 && retry) {
-      try {
-        await refreshToken();
-        return await apiFetch(endpoint, options, false);
-      } catch (e) {
-        useAuthStore.getState().logout();
-        window.location.href = "/login";
-        throw e;
-      }
-    }
-
     const json = await res.json();
 
     if ("success" in json && !json.success) {
@@ -39,12 +25,18 @@ export async function apiFetch<T>(
     }
 
     if (!res.ok) {
+      toast.error(json.message)
       throw new Error(json.message || "Sunucu hatası");
     }
 
     return json;
-  } catch (error: any) {
-    toast.error(error.message || "Beklenmeyen bir hata oluştu");
-    throw error;
+  } catch (error) {
+    if (error instanceof Error) {
+      toast.error(error.message || "Beklenmeyen bir hata oluştu");
+      throw error;
+    } else {
+      toast.error("Beklenmeyen bir hata oluştu");
+      throw new Error("Beklenmeyen bir hata oluştu");
+    }
   }
 }

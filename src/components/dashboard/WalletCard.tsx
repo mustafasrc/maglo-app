@@ -1,6 +1,7 @@
 import { BsThreeDots } from "react-icons/bs";
 import { Card, Wifi } from "@/components/icons";
 import { Wallet } from "@/types";
+import Image from "next/image";
 
 interface WalletCardProps {
     wallets: Wallet[];
@@ -82,8 +83,8 @@ export default function WalletCard({ wallets, isLoading }: WalletCardProps) {
                         </div>
                         <div className="flex justify-end">
                             {universalCard?.network === 'Visa' ?
-                                <img src="/icons-svg/visa.svg" className="w-15" alt="Visa" /> :
-                                <img src="/icons-svg/mastercard.svg" className="w-15" alt="Mastercard" />}
+                                <Image src="/icons-svg/visa.svg" width={42} height={42} alt="Visa" /> :
+                                <Image src="/icons-svg/mastercard.svg" width={42} height={42} alt="Mastercard" />}
                         </div>
                     </div>
 
@@ -104,8 +105,8 @@ export default function WalletCard({ wallets, isLoading }: WalletCardProps) {
                                 <p className="font-medium text-[#929EAE] text-sm">{commercialCard?.expiryMonth}/{commercialCard?.expiryYear}</p>
                             </div>
                             {commercialCard?.network === 'Visa' ?
-                                <img src="/icons-svg/visa.svg" className="w-10" alt="Visa" /> :
-                                <img src="/icons-svg/mastercard.svg" className="w-10" alt="Mastercard" />}
+                                <Image src="/icons-svg/visa.svg" width={42} height={42} alt="Visa" /> :
+                                <Image src="/icons-svg/mastercard.svg" width={42} height={42} alt="Mastercard" />}
                         </div>
                     </div>
                 </div>

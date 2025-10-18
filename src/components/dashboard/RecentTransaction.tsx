@@ -2,7 +2,7 @@ import { FaChevronRight } from "react-icons/fa6";
 import { formatCurrency } from "@/utils/currency";
 import { Transaction } from '@/types'
 import moment from "moment";
-
+import Image from "next/image";
 
 interface RecentTransactionProps {
     transactions: Transaction[];
@@ -60,10 +60,11 @@ export default function RecentTransaction({ transactions, isLoading }: RecentTra
                                     <th className="text-left py-2">
                                         <div className="flex items-center gap-x-3">
                                             <div className="p-3 bg-[#E4F1FF] rounded-xl">
-                                                <img
+                                                <Image
                                                     src={tx.image || "/user.png"}
                                                     alt="icon"
-                                                    className="w-6 h-6"
+                                                    width={24}
+                                                    height={24}
                                                 />
                                             </div>
                                             <div>

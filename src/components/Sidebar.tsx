@@ -5,6 +5,7 @@ import { MdClose } from "react-icons/md";
 import { useAuthStore } from '@/store/auth';
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Image from 'next/image';
 interface SidebarProps {
     isOpen: boolean;
     onClose: () => void;
@@ -37,9 +38,14 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             logout()
             toast.success("Logged out successfully")
             router.push("/login")
-        } catch (err) {
-            toast.error("Logout failed, please try again later")
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                toast.error(`Logout failed: ${err.message}`);
+            } else {
+                toast.error("Logout failed, please try again later");
+            }
         }
+
     };
 
     return (
@@ -62,7 +68,15 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                         {/* Logo and Close Button */}
                         <div className="flex justify-between items-center">
                             <div className="flex gap-x-2 items-center">
-                                <img src="/logo.png" alt="" />
+                                <div className="relative w-8 h-8 ">
+                                    <Image
+                                        src="/logo.png"
+                                        alt="Logo"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+
                                 <h1 className="font-bold text-2xl">Maglo.</h1>
                             </div>
                             <button

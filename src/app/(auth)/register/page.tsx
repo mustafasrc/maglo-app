@@ -40,7 +40,7 @@ export default function Register() {
     const router = useRouter();
 
 
-    const { mutate, isPending } = useMutation<any, Error, FormData>({
+    const { mutate, isPending } = useMutation<RegisterResponse, Error, FormData>({
         mutationFn: (data) => apiFetch<RegisterResponse>("/users/register", {
             method: "POST",
             headers: {
@@ -48,12 +48,9 @@ export default function Register() {
             },
             body: JSON.stringify(data),
         }),
-        onSuccess: (data) => {
+        onSuccess: () => {
             toast.success("Account created successfully!, will redirect to login page");
             router.push("/login");
-        },
-        onError: (err) => {
-            console.warn(err.message)
         },
     });
 
@@ -149,7 +146,7 @@ export default function Register() {
 
                 <p className="text-gray-500 text-center">
                     Already have an account?
-                    <Link href={'/login'} className="font-semibold text-black cursor-pointer mx-2 relative">
+                    <Link href={"/login"} className="font-semibold text-black cursor-pointer mx-2 relative">
                         Sign in
                         <img
                             src="/vector.png"

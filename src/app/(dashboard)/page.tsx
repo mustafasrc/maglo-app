@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useMemo } from "react";
+import { useMemo } from "react";
 import RecentTransaction from "@/components/dashboard/RecentTransaction";
 import ScheduledTransfers from "@/components/dashboard/ScheduledTransfers";
 import StatCard from "@/components/dashboard/StatCard";

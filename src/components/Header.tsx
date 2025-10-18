@@ -4,7 +4,7 @@ import { Search, Notification } from "@/components/icons";
 import { FaCaretDown } from "react-icons/fa";
 import { selectUser, useAuthStore } from "@/store/auth";
 import { IoIosMenu } from "react-icons/io";
-
+import Image from "next/image";
 interface HeaderProps {
     onMenuClick: () => void;
 }
@@ -45,11 +45,14 @@ export default function Header({ onMenuClick }: HeaderProps) {
 
                     <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-[#FAFAFA] rounded-xl hover:bg-gray-200 transition-colors">
                         <div className="flex items-center gap-2 sm:gap-3">
-                            <img
-                                src="/user.png"
-                                className="rounded-full w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0"
-                                alt="User avatar"
-                            />
+                            <div className="relative w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0">
+                                <Image
+                                    src="/user.png"
+                                    alt="User avatar"
+                                    fill
+                                    className="rounded-full object-cover"
+                                />
+                            </div>
                             {/* Name - Hide on small screens */}
                             <span className="hidden sm:inline font-semibold text-sm md:text-base truncate max-w-[120px] md:max-w-none">
                                 {user?.fullName}
