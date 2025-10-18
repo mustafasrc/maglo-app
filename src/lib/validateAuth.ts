@@ -1,9 +1,10 @@
 import Cookies from "js-cookie";
 import { useAuthStore } from "@/store/auth";
 import { apiFetch } from "@/lib/api";
+import { User } from '@/types'
 
 async function fetchUserProfile(): Promise<any> {
-    const res = await apiFetch("/users/profile",);
+    const res = await apiFetch<User>("/users/profile",);
     return res;
 }
 

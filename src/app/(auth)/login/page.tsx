@@ -96,8 +96,10 @@ export default function Login() {
                 <button
                     type="submit"
                     disabled={isPending}
-                    className={`w-full rounded-2xl bg-[#C8EE44] font-semibold text-gray-800 cursor-pointer py-3 flex justify-center items-center gap-x-2 ${isPending ? "opacity-50 cursor-not-allowed" : ""
-                        }`}
+                    className={`
+                    w-full rounded-2xl bg-[#C8EE44] font-semibold text-gray-800 py-3 flex justify-center items-center gap-x-2
+                    ${isPending ? "opacity-50 cursor-not-allowed" : "hover:bg-[#B3D93D] transition-colors cursor-pointer"}
+                `}
                 >
                     {isPending && <FaSpinner className="animate-spin" />}
                     {isPending ? "Loading..." : "Sign In"}
@@ -107,11 +109,15 @@ export default function Login() {
                 <button
                     type="button"
                     disabled={isPending}
-                    className="w-full rounded-2xl border border-gray-200 font-semibold text-gray-500 py-3 cursor-pointer flex items-center justify-center gap-x-3"
+                    className={`
+                    w-full rounded-2xl border border-gray-200 font-semibold text-gray-500 py-3 flex items-center justify-center gap-x-3
+                    ${isPending ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-100 transition-colors cursor-pointer"}
+                `}
                 >
                     <FcGoogle className="text-2xl" />
                     Sign in with Google
                 </button>
+
 
                 <p className="text-gray-500 text-center">
                     Don't have an account?

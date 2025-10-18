@@ -32,7 +32,6 @@ export default function RecentTransaction({ transactions, isLoading }: RecentTra
                     </thead>
                     <tbody>
                         {isLoading ? (
-                            // Skeleton Loading State
                             Array.from({ length: 5 }).map((_, index) => (
                                 <tr key={index} className="animate-pulse">
                                     <th className="text-left py-2">
@@ -56,7 +55,6 @@ export default function RecentTransaction({ transactions, isLoading }: RecentTra
                                 </tr>
                             ))
                         ) : (
-                            // Actual Data
                             transactions.map((tx) => (
                                 <tr key={tx.id}>
                                     <th className="text-left py-2">

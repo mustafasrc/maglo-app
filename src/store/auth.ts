@@ -2,18 +2,9 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import Cookies from 'js-cookie';
+import { User } from '@/types'
 
-interface User {
-    id: string;
-    fullName: string;
-    email: string;
-    role: string;
-    isActive: boolean;
-    lastLoginAt: string;
-    lastLoginIP: string;
-    createdAt: string;
-    updatedAt: string;
-}
+
 
 interface AuthState {
     user: User | null;

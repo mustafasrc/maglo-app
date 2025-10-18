@@ -67,14 +67,15 @@ export default function WalletCard({ wallets, isLoading }: WalletCardProps) {
             ) : (
                 <div className="relative">
                     {/* Universal Card */}
-                    <div className="bg-gradient-to-b from-[#4A4A49] to-[#20201F] rounded-2xl p-5 space-y-6">
+                    <div className="bg-gradient-to-r from-[#4A4A49] to-[#20201F] rounded-2xl p-5 space-y-6">
                         <div className="flex items-center gap-3">
                             <h2 className="text-lg font-bold text-white">{universalCardName}</h2>
                             <span className="w-[1px] h-5 bg-[#626261]"></span>
                             <span className="text-[#626260] font-medium text-xs">{universalCardBank}</span>
                         </div>
-                        <div>
+                        <div className="flex justify-between">
                             <Card className="w-[37px] h-[30px]" />
+                            <Wifi className="w-[37px] h-[30px] text-[#363B41]" />
                         </div>
                         <div>
                             <h3 className="font-bold text-lg text-white tracking-widest">{universalCard?.cardNumber}</h3>

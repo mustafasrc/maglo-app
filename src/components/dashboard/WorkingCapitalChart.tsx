@@ -38,6 +38,9 @@ const CustomTooltip: React.FC<TooltipProps> = ({ active, payload, label }) => {
 export default function IncomeExpenseChart({ data, isLoading = false }: IncomeExpenseChartProps) {
     const [chartType, setChartType] = useState('line');
 
+    const barHeights = [40, 55, 48, 60, 45, 52, 58, 50, 62, 47, 53, 49];
+
+
     return (
         <div className='border border-[#F5F5F5] p-5 rounded-xl'>
             {isLoading ? (
@@ -75,7 +78,7 @@ export default function IncomeExpenseChart({ data, isLoading = false }: IncomeEx
                                 <div
                                     key={i}
                                     className="bg-gray-200 rounded-t w-8"
-                                    style={{ height: `${Math.random() * 60 + 40}%` }}
+                                    style={{ height: `${barHeights[i]}%` }}
                                 ></div>
                             ))}
                         </div>

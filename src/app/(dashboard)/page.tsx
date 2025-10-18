@@ -68,9 +68,8 @@ export default function DashboardPage() {
   const workingCapitalData = useMemo(() => workingCapital?.data.data || [], [workingCapital?.data]);
 
   return (
-    <div className="container mx-auto">
-      <div className="grid grid-cols-12 gap-12">
-        {/* Sol Kolon */}
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-12  gap-6 xl:gap-12">
         <div className="col-span-12 xl:col-span-8 space-y-12">
           {/* Stat Cards */}
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
@@ -108,18 +107,19 @@ export default function DashboardPage() {
           />
         </div>
 
-        {/* Sağ Kolon */}
-        <aside className="col-span-12 xl:col-span-4 space-y-12">
+        <div className="col-span-12 xl:col-span-4 space-y-12">
+          {/* Wallet Card */}
           <WalletCard
             wallets={walletData}
             isLoading={walletLoading}
           />
 
+          {/* Scheduled Transfers */}
           <ScheduledTransfers
             scheduledTransfers={scheduledData}
             isLoading={scheduledLoading}
           />
-        </aside>
+        </div>
       </div>
     </div>
   );
