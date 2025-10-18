@@ -1,15 +1,18 @@
 import { formatCurrency } from "@/utils/currency";
+import { FinancialItem } from "@/types";
 
 export default function StatCard({
     icon: Icon,
     label,
-    value,
+    data,
     isFeatured = false,
+    isLoading = false,
 }: {
     icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     label: string;
-    value: string | number;
+    data: FinancialItem | undefined;
     isFeatured?: boolean;
+    isLoading?: boolean;
 }) {
     return (
         <div
@@ -36,7 +39,7 @@ export default function StatCard({
                     className={`text-2xl font-bold ${isFeatured ? 'text-white' : 'text-black'
                         }`}
                 >
-                    {formatCurrency(value, { locale: "en-US", symbol: "$" })}
+                    {formatCurrency(data?.amount || 0, { currency: data?.currency })}
                 </p>
             </div>
         </div>

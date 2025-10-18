@@ -1,19 +1,33 @@
 import currency from "currency.js";
 
 interface FormatCurrencyOptions {
-  locale?: string;        // Örn: "tr-TR", "en-US"
-  symbol?: string;        // Örn: "₺", "$", "€"
-  precision?: number;     // Ondalık basamak sayısı
+  currency?: string;   // "TRY", "$", "USD" vb.
+  precision?: number;  // Ondalık hane sayısı
 }
 
 export function formatCurrency(
   amount: number | string,
-  { locale = "en-US", symbol = "$", precision = 2 }: FormatCurrencyOptions = {}
+  { currency: curr = "$", precision = 2 }: FormatCurrencyOptions = {}
 ) {
+  // Otomatik locale ve symbol belirle
+  let symbol = "$";
+  let separator = ",";
+  let decimal = ".";
+
+  if (curr === "TRY") {
+    symbol = "₺";
+    separator = ".";
+    decimal = ",";
+  } else if (curr === "$" || curr === "USD") {
+    symbol = "$";
+    separator = ",";
+    decimal = ".";
+  }
+
   return currency(amount, {
     symbol,
     precision,
-    separator: locale === "tr-TR" ? "." : ",",
-    decimal: locale === "tr-TR" ? "," : ".",
+    separator,
+    decimal,
   }).format();
 }
