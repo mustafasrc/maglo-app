@@ -30,7 +30,7 @@ export async function apiFetch<T>(
     }
 
     return json;
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof Error) {
       toast.error(error.message || "Beklenmeyen bir hata oluştu");
       throw error;
