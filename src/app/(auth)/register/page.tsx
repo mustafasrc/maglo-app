@@ -10,6 +10,7 @@ import { FaSpinner } from "react-icons/fa";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { RegisterResponse } from "@/types";
 
 
 const schema = z.object({
@@ -40,7 +41,7 @@ export default function Register() {
 
 
     const { mutate, isPending } = useMutation<any, Error, FormData>({
-        mutationFn: (data) => apiFetch("/users/register", {
+        mutationFn: (data) => apiFetch<RegisterResponse>("/users/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -52,7 +53,7 @@ export default function Register() {
             router.push("/login");
         },
         onError: (err) => {
-            toast.error(err.message || "Something went wrong");
+            console.warn(err.message)
         },
     });
 

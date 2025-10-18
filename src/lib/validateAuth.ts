@@ -1,14 +1,21 @@
 import Cookies from "js-cookie";
 import { useAuthStore } from "@/store/auth";
 import { apiFetch } from "@/lib/api";
-import { User } from '@/types'
+import { ProfileResponse, RefreshTokenResponse } from '@/types'
 
 async function fetchUserProfile(): Promise<any> {
-    const res = await apiFetch<User>("/users/profile",);
-    return res;
+    const res = await apiFetch<ProfileResponse>("/users/profile",);
+    return res
+}
+
+export async function refreshToken(): Promise<any> {
+    const { updateAuthToken } = useAuthStore()
+    const res = await apiFetch<RefreshTokenResponse>("/users/refresh-token",);
+    updateAuthToken(res.data.accessToken)
 }
 
 export async function validateAuth(): Promise<void> {
+
     const { user, accessToken, setAuth, logout } = useAuthStore.getState();
 
     let token = accessToken;
@@ -18,7 +25,7 @@ export async function validateAuth(): Promise<void> {
 
     if (token && !user) {
         try {
-            const userData = await fetchUserProfile();
+            const userData: ProfileResponse = await fetchUserProfile();
             setAuth(userData.data, token);
         } catch (error) {
             logout();

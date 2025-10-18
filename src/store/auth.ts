@@ -15,6 +15,7 @@ interface AuthState {
     setAuth: (user: User, accessToken: string) => void;
     logout: () => void;
     updateUser: (userData: Partial<User>) => void;
+    updateAuthToken: (accessToken: string) => void;
     setLoading: (loading: boolean) => void;
 }
 
@@ -42,6 +43,7 @@ export const useAuthStore = create<AuthState>()(
                 });
             },
 
+
             logout: () => {
                 Cookies.remove('auth-token');
                 set({
@@ -57,9 +59,24 @@ export const useAuthStore = create<AuthState>()(
                     user: state.user ? { ...state.user, ...userData } : null,
                 })),
 
+            updateAuthToken: (accessToken) => {
+                Cookies.set('auth-token', accessToken, {
+                    expires: 7,
+                    secure: process.env.NODE_ENV === 'production',
+                    sameSite: 'strict',
+                    path: '/',
+                });
+
+                set({
+                    accessToken,
+                });
+            },
+
             setLoading: (loading) =>
                 set({ isLoading: loading }),
         }),
+
+
         {
             name: 'auth-storage',
             storage: createJSONStorage(() => localStorage),

@@ -15,6 +15,7 @@ const schema = z.object({
     email: z.string().email("Invalid email address"),
     password: z.string().min(1, "Password is required"),
 });
+import { LoginResponse } from "@/types";
 
 type FormData = z.infer<typeof schema>;
 
@@ -28,7 +29,7 @@ export default function Login() {
 
 
     const { mutate, isPending } = useMutation<any, Error, FormData>({
-        mutationFn: (data) => apiFetch("/users/login", {
+        mutationFn: (data) => apiFetch<LoginResponse>("/users/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -41,7 +42,7 @@ export default function Login() {
             router.push('/')
         },
         onError: (err) => {
-            toast.error(err.message || "An error occurred during login.");
+            console.warn(err.message)
         },
     });
 
