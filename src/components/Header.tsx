@@ -53,7 +53,6 @@ export default function Header({ onMenuClick }: HeaderProps) {
                                     className="rounded-full object-cover"
                                 />
                             </div>
-                            {/* Name - Hide on small screens */}
                             <span className="hidden sm:inline font-semibold text-sm md:text-base truncate max-w-[120px] md:max-w-none">
                                 {user?.fullName}
                             </span>
