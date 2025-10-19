@@ -1,4 +1,4 @@
-// middleware.ts (projenizin root'unda)
+
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
