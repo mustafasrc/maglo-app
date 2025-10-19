@@ -63,7 +63,7 @@ export const useAuthStore = create<AuthState>()(
                 Cookies.set('auth-token', accessToken, {
                     expires: 7,
                     secure: process.env.NODE_ENV === 'production',
-                    sameSite: 'strict',
+                    sameSite: 'lax',
                     path: '/',
                 });
 
