@@ -29,7 +29,7 @@ export const useAuthStore = create<AuthState>()(
 
             setAuth: (user, accessToken) => {
                 Cookies.set('auth-token', accessToken, {
-                    maxAge: 60 * 60 * 24 * 7,
+                    expires: 7,
                     secure: true,
                     sameSite: 'lax',
                     path: '/',
@@ -61,7 +61,7 @@ export const useAuthStore = create<AuthState>()(
 
             updateAuthToken: (accessToken) => {
                 Cookies.set('auth-token', accessToken, {
-                    maxAge: 60 * 60 * 24 * 7,
+                    expires: 7,
                     secure: true,
                     sameSite: 'lax',
                     path: '/',
